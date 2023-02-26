@@ -47,4 +47,5 @@ if status is-interactive
     abbr unset set -e
     abbr dd dd status=progress
     abbr rm rm -I
+    abbr ll ls -l
 end

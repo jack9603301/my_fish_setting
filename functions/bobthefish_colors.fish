@@ -29,8 +29,13 @@ function bobthefish_colors --description 'My Color' --no-scope-shadowing
     set -x color_k8s                      $green[2] $grey[4] --bold
     set -x color_aws_vault                $blue[2] $grey[4] --bold
     set -x color_aws_vault_expired        $blue[2] $red[1] --bold
-    set -x color_username                 $grey[4] $blue[2] --bold
-    set -x color_hostname                 $grey[4] $blue[1]
+    if fish_is_root_user
+        set -x color_username                 $grey[4] $yellow[2] --bold
+        set -x color_hostname                 $grey[4] $yellow[1]
+    else
+        set -x color_username                 $grey[4] $blue[2] --bold
+        set -x color_hostname                 $grey[4] $blue[1]
+    end
     set -x color_rvm                      $red[2] $grey[4] --bold
     set -x color_node                     $green[3] $white[2] --bold
     set -x color_virtualfish               $blue[2] $grey[4] --bold

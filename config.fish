@@ -55,7 +55,7 @@ if status is-interactive
     abbr ll ls -l
     abbr tar tar xvf
     abbr pf lp
-    abbr vscode /opt/VSCode-linux-x64/bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime
+    abbr vscode /opt/vscode/bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime
     abbr run_nvidia prime-run
     alias run_rustup PATH="$PATH:$HOME/.cargo/bin"
     abbr gen_playlist "ls -1 \$PWD/*.mp4 > playlist.txt"
@@ -65,27 +65,27 @@ if status is-interactive
     abbr invoice "flatpak run com.invoiceninja.InvoiceNinja"
     abbr element "flatpak run im.riot.Riot"
     abbr whatsapp "flatpak run com.ktechpit.whatsie"
-    abbr jellyfin "flatpak run com.github.iwalton3.jellyfin-media-player"
+    abbr jellyfin "flatpak run org.jellyfin.JellyfinDesktop"
     abbr growisofs growisofs -dvd-compat -Z /dev/sr0 -f -input-charset utf-8 -R
     abbr hledger hledger --strict
-    abbr xterm_start "export TERM=xterm"
-    alias start_R720 "wakeonlan  24:b6:fd:f8:07:f0"
-    alias stop_R720 "ssh -v root@192.168.2.20 poweroff"
+    abbr xterm-start "export TERM=xterm"
+    alias start-R720 "wakeonlan  24:b6:fd:f8:07:f0"
+    alias stop-R720 "ssh -v root@192.168.2.20 poweroff"
     abbr task_tags_all "task export | jq '[.[].tags[]]' | jq 'unique' | jq '.[]'"
-    set tty $(tty)
-    if string match -r '/dev/tty1' $tty >/dev/null 2>&1
-        echo Start the Wayland GUI graphical environment
-        echo Launch Hyprland WM Environment
-	    export LC_ALL=C
-        export LANG=zh_CN.UTF-8
-        dbus-launch --exit-with-session Hyprland
-    else if string match -r '/dev/pts/\d+' $tty >/dev/null 2>&1
-        echo Initialize fish shell from Hyprland \(or SSH\) environment
-        load_nvm > /dev/stderr
-    else
-        echo Skip processing and go directly to bash
-        set -gx LC_ALL C
-	    set -gx LANG en_US.UTF-8
-        bash
-    end
+    #set tty $(tty)
+    #if string match -r '/dev/tty1' $tty >/dev/null 2>&1
+    #    echo Start the Wayland GUI graphical environment
+    #    echo Launch Hyprland WM Environment
+    #    export LC_ALL=C
+    #    export LANG=zh_CN.UTF-8
+    #    dbus-run-session start-hyprland
+    #else if string match -r '/dev/pts/\d+' $tty >/dev/null 2>&1
+    #    echo Initialize fish shell from Hyprland \(or SSH\) environment
+    #    load_nvm > /dev/stderr
+    #else
+    #    echo Skip processing and go directly to bash
+    #    set -gx LC_ALL C
+    #    set -gx LANG en_US.UTF-8
+    #    bash
+    #end
 end
